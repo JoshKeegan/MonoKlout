@@ -46,7 +46,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
                                     + "calling further methods.");
 
-            string request = Request.GenerateRequest(KloutId, Request.scoreRequestExtension);
+            string request = Request.GenerateRequest(KloutId, Request.SCORE_REQUEST_EXTENSION);
             KloutScoreResponse score = Response.MakeRequest<KloutScoreResponse>(request);
 
             return score;
@@ -58,7 +58,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
                                     + "calling further methods.");
 
-            string request = Request.GenerateRequest(KloutId, Request.userTopicsRequestExtension);
+            string request = Request.GenerateRequest(KloutId, Request.USER_TOPICS_REQUEST_EXTENSION);
             List<KloutUserTopicsResponse> userTopics = Response.MakeRequest<List<KloutUserTopicsResponse>>(request);
 
             return userTopics;
@@ -70,7 +70,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
                                     + "calling further methods.");
 
-            string request = Request.GenerateRequest(KloutId, Request.influenceRequestExtension);
+            string request = Request.GenerateRequest(KloutId, Request.INFLUENCE_REQUEST_EXTENSION);
             KloutInfluenceResponse influence = Response.MakeRequest<KloutInfluenceResponse>(request);
 
             return influence;

@@ -8,14 +8,14 @@ namespace MonoKlout
     internal static class Request
     {
         // Base request Urls
-        private const string baseRequestUrl = "http://api.klout.com/v2/user.json/";
-        private const string initialRequestUrl = "http://api.klout.com/v2/identity.json/twitter?screenName=";
-        private const string apiKeyUrl = "?key=";
+        private const string BASE_REQUEST_URL = "http://api.klout.com/v2/user.json/";
+        private const string INITIAL_REQUEST_URL = "http://api.klout.com/v2/identity.json/twitter?screenName=";
+        private const string API_KEY_URL = "?key=";
 
         // Extension Urls
-        internal const string scoreRequestExtension = "/score";
-        internal const string influenceRequestExtension = "/influence";
-        internal const string userTopicsRequestExtension = "/topics";
+        internal const string SCORE_REQUEST_EXTENSION = "/score";
+        internal const string INFLUENCE_REQUEST_EXTENSION = "/influence";
+        internal const string USER_TOPICS_REQUEST_EXTENSION = "/topics";
 
         internal static string GenerateIdentityRequest(string twitterUsername)
         {
@@ -24,7 +24,7 @@ namespace MonoKlout
                 Console.WriteLine("Generating Identity Request for {0}.", twitterUsername);
             #endif
 
-            string request = initialRequestUrl + twitterUsername + "&key=" + KloutAPI.APIKey;
+            string request = INITIAL_REQUEST_URL + twitterUsername + "&key=" + KloutAPI.APIKey;
 
             return request;
         }
@@ -37,7 +37,7 @@ namespace MonoKlout
                 Console.WriteLine("Request Extension: {0}", requestExtension);
             #endif
 
-            string request = baseRequestUrl + kloutId + requestExtension + apiKeyUrl + KloutAPI.APIKey;
+            string request = BASE_REQUEST_URL + kloutId + requestExtension + API_KEY_URL + KloutAPI.APIKey;
 
             return request;
         }
