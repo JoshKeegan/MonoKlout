@@ -27,7 +27,7 @@ namespace MonoKlout
                                             response.StatusDescription));
                     }
 
-                    var reader = new StreamReader(response.GetResponseStream());
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
                     string json = reader.ReadToEnd();
 
                     object deserializedObj = JsonConvert.DeserializeObject<KloutIdentityResponse>(json);
@@ -63,7 +63,7 @@ namespace MonoKlout
                                             response.StatusDescription));
                     }
 
-                    var reader = new StreamReader(response.GetResponseStream());
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
                     string json = reader.ReadToEnd();
 
                     object deserializedObj = JsonConvert.DeserializeObject<T>(json);
