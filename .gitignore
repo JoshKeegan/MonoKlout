@@ -189,3 +189,6 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 NuGet.exe
+
+# The Developers Klout API Key
+Klout_API_Key
