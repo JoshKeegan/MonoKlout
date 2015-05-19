@@ -30,8 +30,7 @@ namespace MonoKlout
                     StreamReader reader = new StreamReader(response.GetResponseStream());
                     string json = reader.ReadToEnd();
 
-                    object deserializedObj = JsonConvert.DeserializeObject<KloutIdentityResponse>(json);
-                    KloutIdentityResponse identityResponse = deserializedObj as KloutIdentityResponse;
+                    KloutIdentityResponse identityResponse = JsonConvert.DeserializeObject<KloutIdentityResponse>(json);
 
                     return identityResponse;
                 }
@@ -66,8 +65,7 @@ namespace MonoKlout
                     StreamReader reader = new StreamReader(response.GetResponseStream());
                     string json = reader.ReadToEnd();
 
-                    object deserializedObj = JsonConvert.DeserializeObject<T>(json);
-                    T responseObj = (T)deserializedObj;
+                    T responseObj = JsonConvert.DeserializeObject<T>(json);
                     
                     return responseObj;
                 }
