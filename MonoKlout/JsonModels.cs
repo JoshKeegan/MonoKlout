@@ -20,7 +20,7 @@ namespace MonoKlout
     public class KloutScoreResponse
     {
         [JsonProperty("score")]
-        public string score { get; set; }
+        public double score { get; set; }
         
         [JsonProperty("scoreDelta")]
         public KloutScoreDeltaResponse scoreDelta { get; set; }
@@ -30,13 +30,13 @@ namespace MonoKlout
     public class KloutScoreDeltaResponse
     {
         [JsonProperty("dayChange")]
-        public string dayChange { get; set; }
+        public double dayChange { get; set; }
         
         [JsonProperty("weekChange")]
-        public string weekChange { get; set; }
+        public double weekChange { get; set; }
         
         [JsonProperty("monthChange")]
-        public string monthChange { get; set; }
+        public double monthChange { get; set; }
     }
 
     public class KloutUserTopicsResponse
