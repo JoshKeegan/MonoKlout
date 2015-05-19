@@ -28,7 +28,7 @@ namespace MonoKlout
             if (TwitterUsername == string.Empty)
                 throw new Exception("Error: Must set Twitter username before receiving a Klout Id.");
 
-            string request = Requests.GenerateIdentityRequest(TwitterUsername);
+            string request = Request.GenerateIdentityRequest(TwitterUsername);
             KloutIdentityResponse identity = Response.MakeIdentityRequest(request);
 
             // Store our KloutId
@@ -46,7 +46,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
                                     + "calling further methods.");
 
-            string request = Requests.GenerateRequest(KloutId, Requests.scoreRequestExtension);
+            string request = Request.GenerateRequest(KloutId, Request.scoreRequestExtension);
             KloutScoreResponse score = Response.MakeRequest<KloutScoreResponse>(request);
 
             return score;
@@ -58,7 +58,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
                                     + "calling further methods.");
 
-            string request = Requests.GenerateRequest(KloutId, Requests.userTopicsRequestExtension);
+            string request = Request.GenerateRequest(KloutId, Request.userTopicsRequestExtension);
             List<KloutUserTopicsResponse> userTopics = Response.MakeRequest<List<KloutUserTopicsResponse>>(request);
 
             return userTopics;
@@ -70,7 +70,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
                                     + "calling further methods.");
 
-            string request = Requests.GenerateRequest(KloutId, Requests.influenceRequestExtension);
+            string request = Request.GenerateRequest(KloutId, Request.influenceRequestExtension);
             KloutInfluenceResponse influence = Response.MakeRequest<KloutInfluenceResponse>(request);
 
             return influence;

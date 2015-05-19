@@ -5,7 +5,7 @@ namespace MonoKlout
     /*
      * The purpose of this class is to generate the appropriate request for the user's need.
      */
-    internal static class Requests
+    internal static class Request
     {
         // Base request Urls
         private const string baseRequestUrl = "http://api.klout.com/v2/user.json/";

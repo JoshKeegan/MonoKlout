@@ -39,7 +39,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="JsonModels.cs" />
-    <Compile Include="MonoKlout.cs" />
+    <Compile Include="KloutAPI.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Response.cs" />
   </ItemGroup>
