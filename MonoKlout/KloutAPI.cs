@@ -29,7 +29,7 @@ namespace MonoKlout
                 throw new Exception("Error: Must set Twitter username before receiving a Klout Id.");
 
             string request = Request.GenerateIdentityRequest(TwitterUsername);
-            KloutIdentityResponse identity = Response.MakeIdentityRequest(request);
+            KloutIdentityResponse identity = Response.MakeRequest<KloutIdentityResponse>(request);
 
             // Store our KloutId
             if (identity != null)
