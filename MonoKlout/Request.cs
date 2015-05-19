@@ -5,17 +5,17 @@ namespace MonoKlout
     /*
      * The purpose of this class is to generate the appropriate request for the user's need.
      */
-    internal class Requests
+    internal static class Requests
     {
         // Base request Urls
-        const string baseRequestUrl = "http://api.klout.com/v2/user.json/";
-        const string initialRequestUrl = "http://api.klout.com/v2/identity.json/twitter?screenName=";
-        const string apiKeyUrl = "?key=";
+        private const string baseRequestUrl = "http://api.klout.com/v2/user.json/";
+        private const string initialRequestUrl = "http://api.klout.com/v2/identity.json/twitter?screenName=";
+        private const string apiKeyUrl = "?key=";
 
         // Extension Urls
-        public static string scoreRequestExtension = "/score";
-        public static string influenceRequestExtension = "/influence";
-        public static string userTopicsRequestExtension = "/topics";
+        internal const string scoreRequestExtension = "/score";
+        internal const string influenceRequestExtension = "/influence";
+        internal const string userTopicsRequestExtension = "/topics";
 
         internal static string GenerateIdentityRequest(string twitterUsername)
         {

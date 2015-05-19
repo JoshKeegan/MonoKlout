@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace MonoKlout
 {
-    internal class Response
+    internal static class Response
     {
         internal static KloutIdentityResponse MakeIdentityRequest(string requestUrl)
         {
