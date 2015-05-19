@@ -32,7 +32,10 @@ namespace MonoKlout
             KloutIdentityResponse identity = Response.MakeIdentityRequest(request);
 
             // Store our KloutId
-            KloutId = identity.id;
+            if (identity != null)
+            {
+                KloutId = identity.id;
+            }
 
             return identity;
         }
