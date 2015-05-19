@@ -8,8 +8,8 @@ namespace MonoKlout
     public class KloutAPI
     {
         public static string APIKey { get; set; }
-        public static string KloutId { get; set; }
-        public static string TwitterUsername { get; set; }
+        public string KloutId { get; set; }
+        public string TwitterUsername { get; set; }
 
         // Note: The Twitter username must be applied before using MonoKlout.
         public KloutAPI(string apiKey)
