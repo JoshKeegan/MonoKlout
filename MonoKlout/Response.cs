@@ -52,9 +52,9 @@ namespace MonoKlout
             
             try
             {
-                HttpWebRequest request = WebRequest.Create(requestUrl) as HttpWebRequest;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
                 
-                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
                     if (response.StatusCode != HttpStatusCode.OK)
                     {
