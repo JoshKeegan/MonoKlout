@@ -4,12 +4,12 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("MonoKloutLib")]
+[assembly: AssemblyTitle("MonoKlout")]
 [assembly: AssemblyDescription("API library for accessing Klout.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Boggan Labs")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MonoKlout")]
-[assembly: AssemblyCopyright("pierceboggan")]
+[assembly: AssemblyCopyright("Pierce Boggan 2012, Josh Keegan 2015, VISAV Ltd. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
