@@ -36,7 +36,7 @@ namespace UnitTests
 
             KloutIdentityResponse response = kloutApi.GetKloutIdentity("kevin");
 
-            Assert.AreEqual(expected, response.id);
+            Assert.AreEqual(expected, response.Id);
         }
 
         [Test]

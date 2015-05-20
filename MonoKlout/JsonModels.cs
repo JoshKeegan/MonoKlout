@@ -10,97 +10,97 @@ namespace MonoKlout
     public class KloutIdentityResponse
     {
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string Id { get; set; }
         
         [JsonProperty("network")]
-        public string network { get; set; }
+        public string Network { get; set; }
     }
     
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutScoreResponse
     {
         [JsonProperty("score")]
-        public double score { get; set; }
+        public double Score { get; set; }
         
         [JsonProperty("scoreDelta")]
-        public KloutScoreDeltaResponse scoreDelta { get; set; }
+        public KloutScoreDeltaResponse ScoreDelta { get; set; }
     }
     
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutScoreDeltaResponse
     {
         [JsonProperty("dayChange")]
-        public double dayChange { get; set; }
+        public double DayChange { get; set; }
         
         [JsonProperty("weekChange")]
-        public double weekChange { get; set; }
+        public double WeekChange { get; set; }
         
         [JsonProperty("monthChange")]
-        public double monthChange { get; set; }
+        public double MonthChange { get; set; }
     }
 
     public class KloutUserTopicsResponse
     {
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("displayName")]
-        public string displayName { get; set; }
+        public string DisplayName { get; set; }
 
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("slug")]
-        public string slug { get; set; }
+        public string Slug { get; set; }
 
         [JsonProperty("imageUrl")]
-        public string imageUrl { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutInfluenceResponse
     {
         [JsonProperty("myInfluencers")]
-        public KloutInfluenceEntityResponse[] myInfluencers { get; set; }
+        public KloutInfluenceEntityResponse[] MyInfluencers { get; set; }
 
         [JsonProperty("myInfluencees")]
-        public KloutInfluenceEntityResponse[] myInfluencees { get; set; }
+        public KloutInfluenceEntityResponse[] MyInfluencees { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutInfluenceEntityResponse
     {
         [JsonProperty("entity")]
-        public KloutInfluenceEntityDetailedResponse entity { get; set; }
+        public KloutInfluenceEntityDetailedResponse Entity { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutInfluenceEntityDetailedResponse
     {
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("payload")]
-        public KloutInfluencePayloadResponse payload { get; set; }
+        public KloutInfluencePayloadResponse Payload { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutInfluencePayloadResponse
     {
         [JsonProperty("kloutId")]
-        public string kloutId { get; set; }
+        public string KloutId { get; set; }
 
         [JsonProperty("nick")]
-        public string nick { get; set; }
+        public string Nick { get; set; }
 
         [JsonProperty("score")]
-        public KloutInfluenceScoreResponse score { get; set; }
+        public KloutInfluenceScoreResponse Score { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
     public class KloutInfluenceScoreResponse
     {
         [JsonProperty("score")]
-        public string score { get; set; }
+        public string Score { get; set; }
     }
 }  
