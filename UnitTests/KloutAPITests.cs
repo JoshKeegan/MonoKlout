@@ -29,10 +29,10 @@ namespace UnitTests
         [Test]
         public void TestGetKloutIdentity()
         {
-            KloutAPI kloutApi = new KloutAPI(kloutApiKey, "kevin");
+            KloutAPI kloutApi = new KloutAPI(kloutApiKey);
             const string expected = "42502726249709279";
 
-            KloutIdentityResponse response = kloutApi.GetKloutIdentity();
+            KloutIdentityResponse response = kloutApi.GetKloutIdentity("kevin");
 
             Assert.AreEqual(expected, response.id);
         }
@@ -40,9 +40,9 @@ namespace UnitTests
         [Test]
         public void TestGetKloutIdentityDoesntExist()
         {
-            KloutAPI kloutApi = new KloutAPI(kloutApiKey, "kshkahashfkljah123");
+            KloutAPI kloutApi = new KloutAPI(kloutApiKey);
 
-            KloutIdentityResponse response = kloutApi.GetKloutIdentity();
+            KloutIdentityResponse response = kloutApi.GetKloutIdentity("kshkahashfkljah123");
 
             Assert.IsNull(response);
         }

@@ -7,73 +7,73 @@ namespace MonoKlout
 {
     public class KloutAPI
     {
+        //Public variables
         public static string APIKey { get; set; }
-        public string KloutId { get; set; }
-        public string TwitterUsername { get; set; }
 
-        // Note: The Twitter username must be applied before using MonoKlout.
+        //Constructor
         public KloutAPI(string apiKey)
         {
             APIKey = apiKey;
         }
 
-        public KloutAPI(string apiKey, string twitterUsername)
+        public KloutIdentityResponse GetKloutIdentity(string twitterUsername)
         {
-            APIKey = apiKey;
-            TwitterUsername = twitterUsername;
-        }
-
-        public KloutIdentityResponse GetKloutIdentity()
-        {
-            if (TwitterUsername == string.Empty)
-                throw new Exception("Error: Must set Twitter username before receiving a Klout Id.");
-
-            string request = Request.GenerateIdentityRequest(TwitterUsername);
-            KloutIdentityResponse identity = Response.MakeRequest<KloutIdentityResponse>(request);
-
-            // Store our KloutId
-            if (identity != null)
+            if (twitterUsername == null)
             {
-                KloutId = identity.id;
+                throw new ArgumentNullException("twitterUsername");
             }
+            if (twitterUsername.Trim() == "")
+            {
+                throw new ArgumentException("Twitter Username cannot be whitespace", "twitterUsername");
+            }
+
+            string request = Request.GenerateIdentityRequest(twitterUsername);
+            KloutIdentityResponse identity = Response.MakeRequest<KloutIdentityResponse>(request);
 
             return identity;
         }
 
-        public KloutScoreResponse GetKloutScore()
+        public KloutScoreResponse GetKloutScore(string kloutId)
         {
-            if (KloutId == string.Empty)
-                throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
-                                    + "calling further methods.");
+            checkKloutId(kloutId);
 
-            string request = Request.GenerateRequest(KloutId, Request.SCORE_REQUEST_EXTENSION);
+            string request = Request.GenerateRequest(kloutId, Request.SCORE_REQUEST_EXTENSION);
             KloutScoreResponse score = Response.MakeRequest<KloutScoreResponse>(request);
 
             return score;
         }
 
-        public List<KloutUserTopicsResponse> GetUserTopics()
+        public List<KloutUserTopicsResponse> GetUserTopics(string kloutId)
         {
-            if (KloutId == string.Empty)
-                throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
-                                    + "calling further methods.");
+            checkKloutId(kloutId);
 
-            string request = Request.GenerateRequest(KloutId, Request.USER_TOPICS_REQUEST_EXTENSION);
+            string request = Request.GenerateRequest(kloutId, Request.USER_TOPICS_REQUEST_EXTENSION);
             List<KloutUserTopicsResponse> userTopics = Response.MakeRequest<List<KloutUserTopicsResponse>>(request);
 
             return userTopics;
         }
 
-        public KloutInfluenceResponse GetInfluence()
+        public KloutInfluenceResponse GetInfluence(string kloutId)
         {
-            if (KloutId == string.Empty)
-                throw new Exception("Error: Must get the user's Klout Id using GetKloutIdentity() before "
-                                    + "calling further methods.");
+            checkKloutId(kloutId);
 
-            string request = Request.GenerateRequest(KloutId, Request.INFLUENCE_REQUEST_EXTENSION);
+            string request = Request.GenerateRequest(kloutId, Request.INFLUENCE_REQUEST_EXTENSION);
             KloutInfluenceResponse influence = Response.MakeRequest<KloutInfluenceResponse>(request);
 
             return influence;
+        }
+
+        //Private Methods
+        private static void checkKloutId(string kloutId)
+        {
+            if (kloutId == null)
+            {
+                throw new ArgumentNullException("kloutId");
+            }
+            if (kloutId.Trim() == "")
+            {
+                throw new ArgumentException("Klout ID cannot be whitespace", "kloutId");
+            }
         }
     }
 }
