@@ -13,55 +13,110 @@ MonoKlout is a library for Version 2 of the Klout API. It is built using the Mon
 
 #Getting Started
 To get started, just instantiate the KloutAPI class.
-    var klout = new KloutAPI("apikey", "twitterusername");
-You can now access methods via the klout object:
-    KloutIdentityResponse identity = klout.GetKloutIdentity();
-    KloutScoreResponse score = klout.GetKloutScore();
-    KloutInfluenceResponse influence = klout.GetInfluence();
-    List<KloutUserTopicsResponse> userTopics = klout.GetUserTopics();
+```csharp
+KloutApi klout = new KloutApi("apikey");
+```
+You can now access methods via the klout object (instance of KloutApi):
+```csharp
+KloutIdentityResponse identity = klout.GetKloutIdentity("twitterUsername");
+KloutScoreResponse score = klout.GetKloutScore("kloutId");
+KloutInfluenceResponse influence = klout.GetInfluence("kloutId");
+List<KloutUserTopicsResponse> userTopics = klout.GetUserTopics("kloutId");
 
-    // Klout Id
-    string id = identity.id;
+// Klout Id
+string id = identity.Id;
 
-    // Klout Score
-    string scoreNumber = score.score;
-    string dailyChange = score.scoreDelta.dayChange;
-    string weeklyChange = score.scoreDelta.weekChange;
-    string monthlyChange = score.scoreDelta.monthChange;
+// Klout Score
+double scoreNumber = score.Score;
+double dailyChange = score.ScoreDelta.DayChange;
+double weeklyChange = score.ScoreDelta.WeekChange;
+double monthlyChange = score.ScoreDelta.MonthChange;
 
-    // Klout Influence
-    var influenees = influence.myInfluencees;
-    var influencers = influence.myInfluencers;
+// Klout Influence
+KloutInfluenceEntityResponse[] influencees = influence.MyInfluencees;
+KloutInfluenceEntityResponse[] influencers = influence.MyInfluencers;
 
-    foreach (KloutInfluenceEntityResponse influencee in influenees)
-    {
+foreach (KloutInfluenceEntityResponse influencee in influencees)
+{
 	// Information about influencee
-	Console.WriteLine(influencee.entity.payload.kloutId);
-	Console.WriteLine(influencee.entity.payload.nick);
-	Console.WriteLine(influencee.entity.payload.score);
-    }
+	Console.WriteLine(influencee.Entity.Payload.KloutId);
+	Console.WriteLine(influencee.Entity.Payload.Nick);
+	Console.WriteLine(influencee.Entity.Payload.Score);
+}
 
-    foreach (KloutInfluenceEntityResponse influencer in influencers)
-    {
+foreach (KloutInfluenceEntityResponse influencer in influencers)
+{
 	// Information about influencee
-	Console.WriteLine(influencer.entity.payload.kloutId);
-	Console.WriteLine(influencer.entity.payload.nick);
-	Console.WriteLine(influencer.entity.payload.score);
-    }
+	Console.WriteLine(influencer.Entity.Payload.KloutId);
+	Console.WriteLine(influencer.Entity.Payload.Nick);
+	Console.WriteLine(influencer.Entity.Payload.Score);
+}
 
-    // Klout User Topics
-    foreach (KloutUserTopicsResponse topic in userTopics)
-    {   
+// Klout User Topics
+foreach (KloutUserTopicsResponse topic in userTopics)
+{   
 	// Information about the topic
-	Console.WriteLine(topic.displayName);
-	Console.WriteLine(topic.name);
-	Console.WriteLine(topic.slug);
-	Console.WriteLine(topic.imageUrl);
-    }
+	Console.WriteLine(topic.DisplayName);
+	Console.WriteLine(topic.Name);
+	Console.WriteLine(topic.Slug);
+	Console.WriteLine(topic.ImageUrl);
+}
+```
 
-#Roadmap
-* Async
-* Identity calls based off Google Plus identity
+#Exceptions
+In order to make it as simple as possible to get started using MonoKlout (and prevent all calls to the library from having to be wrapped in a try/catch block), exceptions generated from contacting the Klout API do not get thrown.
+Instead, if there was a problem fetching data from Klout, the library will return the default value for the return type (null for objects), so you should always check if the response is null before using it.  
+  
+If you want to access the exceptions, you can do so with:
+```csharp
+IEnumerable<WebException> exceptions = ExceptionHandler.GetExceptions()
+```
+
+This could then be used to log exceptions in your application like:
+```csharp
+public static void LogKloutExceptions(bool clearExceptions = true)
+{
+    WebException[] exceptions = ExceptionHandler.GetExceptions().ToArray();
+
+    if (exceptions.Length > 0)
+    {
+        DefaultLog.Warn("Received {0} exceptions from Klout", exceptions.Length);
+
+        //Log the individual exceptions
+        foreach (WebException e in exceptions)
+        {
+            DefaultLog.Warn("Klout Exception:\n{0}", e);
+        }
+
+        //Clear the exceptions if requested
+        if (clearExceptions)
+        {
+            ExceptionHandler.ClearExceptions();
+        }
+    }
+}
+```
+
+You can also access just the last exception with:
+```csharp
+ExceptionHandler.GetLastException()
+```
+
+Which could be used to re-throw the exception to be handled at a higher level in your application:
+```csharp
+WebException e = ExceptionHandler.GetLastException();
+if (e != null)
+{
+    throw e;
+}
+```
+
+Note that there is a different ExceptionHandler instance per-thread, so if you have a multi-threaded application, each thread will only be able to see its own exceptions.  
+This also means that if you were to make calls asyncronously with a Task, you'll need to check for exceptions from within the worked Task, as any exceptions will not be visible to the main thread.
+
+#Issues
+Please request any changes/features, or report any issues on the [Bug Tracker](https://github.com/JoshKeegan/MonoKlout/issues).
 
 #Author
-I (Pierce Boggan) wrote MonoKlout one weekend as a little side project. I'm currently a sophomore studying Software Engineering at Auburn University. You can visit my blog at pierceboggan.com.
+I (Pierce Boggan) wrote MonoKlout one weekend as a little side project. I'm currently a sophomore studying Software Engineering at Auburn University. You can visit my blog at pierceboggan.com.  
+Development & maintenance of MonoKlout was taken over in 2015 by [Josh Keegan](https://github.com/JoshKeegan).
