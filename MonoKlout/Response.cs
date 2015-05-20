@@ -10,11 +10,6 @@ namespace MonoKlout
     {
         internal static T MakeRequest<T>(string requestUrl)
         {
-            #if DEBUG
-                Console.WriteLine("Inside MakeRequest().");
-                Console.WriteLine("Request: {0}", requestUrl);
-            #endif
-            
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);

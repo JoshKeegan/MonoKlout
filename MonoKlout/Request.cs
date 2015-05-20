@@ -19,11 +19,6 @@ namespace MonoKlout
 
         internal static string GenerateIdentityRequest(string apiKey, string twitterUsername)
         {
-            #if DEBUG
-                Console.WriteLine("Inside GenerateIdentityRequest().");
-                Console.WriteLine("Generating Identity Request for {0}.", twitterUsername);
-            #endif
-
             string request = INITIAL_REQUEST_URL + twitterUsername + "&key=" + apiKey;
 
             return request;
@@ -31,12 +26,6 @@ namespace MonoKlout
 
         internal static string GenerateRequest(string apiKey, string kloutId, string requestExtension)
         {
-            #if DEBUG
-                Console.WriteLine("Inside GenerateRequest().");
-                Console.WriteLine("Generating Request for {0}.", kloutId);
-                Console.WriteLine("Request Extension: {0}", requestExtension);
-            #endif
-
             string request = BASE_REQUEST_URL + kloutId + requestExtension + API_KEY_URL + apiKey;
 
             return request;
