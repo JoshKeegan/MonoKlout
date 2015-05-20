@@ -42,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KloutAPITests.cs" />
+    <Compile Include="KloutApiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MonoKlout\MonoKloutAPI.csproj">
+    <ProjectReference Include="..\MonoKlout\MonoKloutApi.csproj">
       <Project>{ab087196-4be5-4bce-af6d-9a9331e7d4da}</Project>
-      <Name>MonoKloutAPI</Name>
+      <Name>MonoKloutApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

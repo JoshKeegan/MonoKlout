@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace MonoKlout
 {
-    public class KloutAPI
+    public class KloutApi
     {
         //Private variables
         private readonly string apiKey;
 
         //Constructor
-        public KloutAPI(string apiKey)
+        public KloutApi(string apiKey)
         {
             this.apiKey = apiKey;
         }

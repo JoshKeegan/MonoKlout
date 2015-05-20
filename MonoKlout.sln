@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoKloutAPI", "MonoKlout\MonoKloutAPI.csproj", "{AB087196-4BE5-4BCE-AF6D-9A9331E7D4DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoKloutApi", "MonoKlout\MonoKloutApi.csproj", "{AB087196-4BE5-4BCE-AF6D-9A9331E7D4DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{6AC40238-210F-4E72-AFE0-353C832B338B}"
 EndProject
