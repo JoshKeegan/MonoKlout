@@ -8,8 +8,8 @@ namespace MonoKlout
     internal static class Request
     {
         // Base request Urls
-        private const string BASE_REQUEST_URL = "http://api.klout.com/v2/user.json/";
-        private const string INITIAL_REQUEST_URL = "http://api.klout.com/v2/identity.json/twitter?screenName=";
+        private const string BASE_REQUEST_URL = "https://api.klout.com/v2/user.json/";
+        private const string INITIAL_REQUEST_URL = "https://api.klout.com/v2/identity.json/twitter?screenName=";
         private const string API_KEY_URL = "?key=";
 
         // Extension Urls
