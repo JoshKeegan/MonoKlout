@@ -17,19 +17,19 @@ namespace MonoKlout
         internal const string INFLUENCE_REQUEST_EXTENSION = "/influence";
         internal const string USER_TOPICS_REQUEST_EXTENSION = "/topics";
 
-        internal static string GenerateIdentityRequest(string twitterUsername)
+        internal static string GenerateIdentityRequest(string apiKey, string twitterUsername)
         {
             #if DEBUG
                 Console.WriteLine("Inside GenerateIdentityRequest().");
                 Console.WriteLine("Generating Identity Request for {0}.", twitterUsername);
             #endif
 
-            string request = INITIAL_REQUEST_URL + twitterUsername + "&key=" + KloutAPI.APIKey;
+            string request = INITIAL_REQUEST_URL + twitterUsername + "&key=" + apiKey;
 
             return request;
         }
 
-        internal static string GenerateRequest(string kloutId, string requestExtension)
+        internal static string GenerateRequest(string apiKey, string kloutId, string requestExtension)
         {
             #if DEBUG
                 Console.WriteLine("Inside GenerateRequest().");
@@ -37,7 +37,7 @@ namespace MonoKlout
                 Console.WriteLine("Request Extension: {0}", requestExtension);
             #endif
 
-            string request = BASE_REQUEST_URL + kloutId + requestExtension + API_KEY_URL + KloutAPI.APIKey;
+            string request = BASE_REQUEST_URL + kloutId + requestExtension + API_KEY_URL + apiKey;
 
             return request;
         }

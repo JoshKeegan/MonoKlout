@@ -7,13 +7,13 @@ namespace MonoKlout
 {
     public class KloutAPI
     {
-        //Public variables
-        public static string APIKey { get; set; }
+        //Private variables
+        private readonly string apiKey;
 
         //Constructor
         public KloutAPI(string apiKey)
         {
-            APIKey = apiKey;
+            this.apiKey = apiKey;
         }
 
         public KloutIdentityResponse GetKloutIdentity(string twitterUsername)
@@ -27,7 +27,7 @@ namespace MonoKlout
                 throw new ArgumentException("Twitter Username cannot be whitespace", "twitterUsername");
             }
 
-            string request = Request.GenerateIdentityRequest(twitterUsername);
+            string request = Request.GenerateIdentityRequest(apiKey, twitterUsername);
             KloutIdentityResponse identity = Response.MakeRequest<KloutIdentityResponse>(request);
 
             return identity;
@@ -37,7 +37,7 @@ namespace MonoKlout
         {
             checkKloutId(kloutId);
 
-            string request = Request.GenerateRequest(kloutId, Request.SCORE_REQUEST_EXTENSION);
+            string request = Request.GenerateRequest(apiKey, kloutId, Request.SCORE_REQUEST_EXTENSION);
             KloutScoreResponse score = Response.MakeRequest<KloutScoreResponse>(request);
 
             return score;
@@ -47,7 +47,7 @@ namespace MonoKlout
         {
             checkKloutId(kloutId);
 
-            string request = Request.GenerateRequest(kloutId, Request.USER_TOPICS_REQUEST_EXTENSION);
+            string request = Request.GenerateRequest(apiKey, kloutId, Request.USER_TOPICS_REQUEST_EXTENSION);
             List<KloutUserTopicsResponse> userTopics = Response.MakeRequest<List<KloutUserTopicsResponse>>(request);
 
             return userTopics;
@@ -57,7 +57,7 @@ namespace MonoKlout
         {
             checkKloutId(kloutId);
 
-            string request = Request.GenerateRequest(kloutId, Request.INFLUENCE_REQUEST_EXTENSION);
+            string request = Request.GenerateRequest(apiKey, kloutId, Request.INFLUENCE_REQUEST_EXTENSION);
             KloutInfluenceResponse influence = Response.MakeRequest<KloutInfluenceResponse>(request);
 
             return influence;
