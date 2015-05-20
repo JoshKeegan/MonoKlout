@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
+
 using Newtonsoft.Json;
 
 namespace MonoKlout
@@ -22,7 +23,7 @@ namespace MonoKlout
                 {
                     if (response.StatusCode != HttpStatusCode.OK)
                     {
-                        throw new Exception(string.Format("Server error {0} : {1}",
+                        throw new WebException(string.Format("Server error {0} : {1}",
                                             response.StatusCode,
                                             response.StatusDescription));
                     }
@@ -35,9 +36,10 @@ namespace MonoKlout
                     return responseObj;
                 }
             }
-            catch (Exception e)
+            catch (WebException e)
             {
-                Console.WriteLine(e.Message);
+                ExceptionHandler.Add(requestUrl, e);
+
                 return default(T);
             }
         }
