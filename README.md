@@ -1,4 +1,6 @@
-#Introduction
+#MonoKlout
+[![Build status](https://ci.appveyor.com/api/projects/status/9myt51i2jmql8a0l?svg=true)](https://ci.appveyor.com/project/JoshKeegan/monoklout)  
+  
 MonoKlout is a library for Version 2 of the Klout API. It is built using the Mono framework and JSON.NET, and is especially aimed at use in mobile applications, specifically using MonoTouch or Mono for Android. 
 
 #Features
