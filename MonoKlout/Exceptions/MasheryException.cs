@@ -94,7 +94,7 @@ namespace MonoKlout.Exceptions
 
             HttpWebResponse response = (HttpWebResponse) e.Response;
 
-            // Must be either a 404, 503, 504 or have the Mashable error headers
+            // Must be either a 404, 503, 504 or have the Mashery error headers
             return response.StatusCode == HttpStatusCode.NotFound ||
                 response.StatusCode == HttpStatusCode.ServiceUnavailable ||
                 response.StatusCode == HttpStatusCode.GatewayTimeout ||
