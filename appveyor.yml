@@ -1,0 +1,9 @@
+environment:
+  klout_api_key:
+    secure: dtW/ZIPJdHYG0td40/MDXu2t8mtK4khz/9q+LBWupfA=
+
+before_build:
+  - nuget restore
+  
+before_test:
+  - ps: $env:klout_api_key | Out-File "UnitTests\Klout_API_Key"
