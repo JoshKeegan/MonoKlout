@@ -80,5 +80,28 @@ namespace UnitTests
 
             Assert.IsTrue(me.InvalidApiKey);
         }
+
+        [Test]
+        public void TestMasheryExceptionUrlDoesntIncludeApiKey()
+        {
+            KloutApi kloutApi = new KloutApi(kloutApiKey);
+
+            KloutIdentityResponse response = kloutApi.GetKloutIdentity("kshkahashfkljah123");
+
+            //Response should be null
+            Assert.IsNull(response);
+
+            //Exception has been logged
+            WebException e = ExceptionHandler.GetLastException();
+            Assert.NotNull(e);
+
+            //Should be a Mashery Exception
+            MasheryException me = e as MasheryException;
+            Assert.NotNull(me);
+
+            Assert.IsTrue(me.IsNotFound);
+
+            Assert.IsFalse(me.Url.Contains(kloutApiKey));
+        }
     }
 }

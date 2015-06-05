@@ -8,11 +8,13 @@ namespace MonoKlout
 {
     internal static class Response
     {
-        internal static T MakeRequest<T>(string requestUrl)
+        internal static T MakeRequest<T>(string requestUrl, string apiKey)
         {
+            string requestUrlWithApiKey = Request.AddApiKey(requestUrl, apiKey);
+
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrlWithApiKey);
                 
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
