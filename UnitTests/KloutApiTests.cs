@@ -17,7 +17,8 @@ namespace UnitTests
     public class KloutApiTests
     {
         //Constants
-        private const string KLOUT_API_KEY_FILE_PATH = "../../KLOUT_API_KEY";
+        private readonly string KLOUT_API_KEY_FILE_PATH = Path.Combine(
+            TestContext.CurrentContext.TestDirectory, "../../KLOUT_API_KEY");
 
         //Variables
         private static string kloutApiKey;
