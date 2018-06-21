@@ -1,9 +1,15 @@
-#MonoKlout
+# The Klout Service no longer exists
+Klout was shut down by its owners Lithium on the 25th of May 2018.  
+Therefore this library no longer serves any purpose, and is left here for reference only.  
+
+For full details on Klout being shutdown, see https://community.lithium.com/t5/Lithium-s-View-Blog/Sunsetting-Klout/ba-p/473363
+
+# MonoKlout
 [![Build status](https://ci.appveyor.com/api/projects/status/9myt51i2jmql8a0l?svg=true)](https://ci.appveyor.com/project/JoshKeegan/monoklout)  
   
 MonoKlout is a library for Version 2 of the Klout API. It is built using the Mono framework and JSON.NET, and is especially aimed at use in mobile applications, specifically using MonoTouch or Mono for Android. 
 
-#Features
+# Features
 * Support for all Version 2 calls
 	* Identity
 	* Score
@@ -13,7 +19,7 @@ MonoKlout is a library for Version 2 of the Klout API. It is built using the Mon
 	* User Topics
 * Works with the Mono framework and specifically at MonoTouch and Mono for Android (see [Xamarin](http://xamarin.com/))
 
-#Getting Started
+# Getting Started
 To get started, just instantiate the KloutAPI class.
 ```csharp
 KloutApi klout = new KloutApi("apikey");
@@ -116,9 +122,9 @@ if (e != null)
 Note that there is a different ExceptionHandler instance per-thread, so if you have a multi-threaded application, each thread will only be able to see its own exceptions.  
 This also means that if you were to make calls asyncronously with a Task, you'll need to check for exceptions from within the worked Task, as any exceptions will not be visible to the main thread.
 
-#Issues
+# Issues
 Please request any changes/features, or report any issues on the [Bug Tracker](https://github.com/JoshKeegan/MonoKlout/issues).
 
-#Author
+# Author
 I (Pierce Boggan) wrote MonoKlout one weekend as a little side project. I'm currently a sophomore studying Software Engineering at Auburn University. You can visit my blog at pierceboggan.com.  
 Development & maintenance of MonoKlout was taken over in 2015 by [Josh Keegan](https://github.com/JoshKeegan).
